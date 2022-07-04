@@ -1,5 +1,5 @@
 TESTCALICO: 100/100
-
+```
 OOP/Assignment1
 ├── bin
 │   └── assignment1
@@ -11,9 +11,12 @@ OOP/Assignment1
 └── src
     ├── pokemon.cpp
     └── main.cpp
+```
 Kodu test etmek için:
 
+```shell
 $ git clone https://github.com/Huzuntu/OOP.git
 $ pip install calico
 $ cd OOP/Assignment1
 $ python -m calico.cli assignment1_test_updated.yaml
+```
