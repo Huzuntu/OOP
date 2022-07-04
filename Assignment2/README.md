@@ -2,7 +2,7 @@ TESTCALICO: 100/100
 ```
 OOP/Assignment2
 ├── bin
-│   └── assignment2
+    └── assignment2
 ├── assignment2_test.yaml
 ├── Assignment_2.pdf
 ├── include
