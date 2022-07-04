@@ -1,0 +1,382 @@
+- init:
+    run: rm -f test
+    blocker: true
+
+- build:
+    run: g++ -Wall -Werror main.cpp pokemon.cpp pokemon.h -o test -lm
+    exit: 0
+    points: 20
+    blocker: true
+
+#Create Character 1
+- case1:
+    run: ./test enemyNames_test.txt pokemonNames_test.txt
+    script: 
+        - expect: '.*'
+        - send: "Ash"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "7"
+    exit: 0
+    points: 5
+
+#Create Character 2
+- case2:
+    run: ./test enemyNames_test.txt pokemonNames_test.txt
+    script: 
+        - expect: '.*'
+        - send: "Ash"
+        - expect: '.*'
+        - send: "3"
+        - expect: '.*'
+        - send: "7"
+    exit: 0
+    points: 5
+
+#Fight 
+- case3:
+    run: ./test enemyNames_test.txt pokemonNames_test.txt
+    script: 
+        - expect: '.*'
+        - send: "Ash"
+        - expect: '.*'
+        - send: "2" 
+        - expect: '.*'
+        - send: "1" #Fight 1
+        - expect: '(.*)James(.*)Abra(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 2
+        - expect: '(.*)Misty(.*)Alakazam(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 3
+        - expect: '(.*)Jessie(.*)Flareon(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 4
+        - expect: '(.*)Oak(.*)Gengar(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 5
+        - expect: '(.*)Brock(.*)Magikarp(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 6
+        - expect: '(.*)Serena(.*)Arbok(.*)'
+        - send: "2"
+        - expect: '.*'
+        - send: "4"
+        - expect: '25(.*)'
+        - send: "5"
+        - expect: '5(.*)'
+        - send: "6"
+        - expect: '(.*)Abra(.*)Alakazam(.*)Flareon(.*)Gengar(.*)Magikarp(.*)Arbok(.*)'
+        - send: "7"
+    exit: 0
+    points: 20
+
+
+#Catch
+- case4:
+    run: ./test enemyNames_test.txt pokemonNames_test.txt
+    script: 
+        - expect: '.*'
+        - send: "Ash"
+        - expect: '.*'
+        - send: "2"
+        - expect: '.*'
+        - send: "2" #Catch 1
+        - expect: '(.*)Abra(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 2
+        - expect: '(.*)Alakazam(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 3
+        - expect: '(.*)Flareon(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 4
+        - expect: '(.*)Gengar(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 5
+        - expect: '(.*)Magikarp(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 6
+        - expect: '(.*)Arbok(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 7
+        - expect: '(.*)Koffing(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 8
+        - expect: '(.*)Machop(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 9
+        - expect: '(.*)Meowth(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 10 
+        - expect: '(.*)Banette(.*)'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 11
+        - expect: '(.*)Goldeen(.*)'
+        - send: "2"
+        - expect: '.*'
+        - send: "3"
+        - expect: '10(.*)'
+        - send: "4"
+        - expect: '0(.*)'
+        - send: "6"
+        - expect: '(.*)Abra(.*)Alakazam(.*)Flareon(.*)Gengar(.*)Magikarp(.*)Arbok(.*)Koffing(.*)Machop(.*)Meowth(.*)Banette(.*)Goldeen(.*)'
+        - send: "7"
+    exit: 0
+    points: 20
+
+
+#Game Run
+- case5:
+    run: ./test enemyNames_test.txt pokemonNames_test.txt
+    script: 
+        - expect: '.*'
+        - send: "Ash"
+        - expect: '.*'
+        - send: "2"
+        - expect: '.*'
+        - send: "1" #Fight 1
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 1
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 2
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 3
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 2
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 3
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 4
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 5
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 6
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 7
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 4
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 8
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 5
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 9
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 6
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 7
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 8
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 10
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 11
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 12
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 13
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 14
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "2" #Catch 15
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 9
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1" #Fight 10
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "1"
+        - expect: '.*'
+        - send: "3"
+        - expect: '15(.*)'
+        - send: "4"
+        - expect: '25(.*)'
+        - send: "5"
+        - expect: '10(.*)'
+        - send: "7"
+    exit: 0
+    points: 30
