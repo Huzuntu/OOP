@@ -1,2 +1,2 @@
 # OOP
-İTÜ'de OOP üzerine yaptığım ödev dosyaları vs.
+İTÜ'de OOP Homeworks vs.
